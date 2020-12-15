@@ -4,11 +4,11 @@ public class DriverUtils {
 
     public static void setInitialConfiguration() {
 
-        DriverManger.getWebDriver().manage().window().maximize();
+        DriverManager.getWebDriver().manage().window().maximize();
     }
 
     public static void navigateToPage(String pageUrl) {
 
-        DriverManger.getWebDriver().navigate().to(pageUrl);
+        DriverManager.getWebDriver().navigate().to(pageUrl);
     }
 }

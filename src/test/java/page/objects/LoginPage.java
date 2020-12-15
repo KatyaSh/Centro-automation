@@ -1,6 +1,6 @@
 package page.objects;
 
-import driver.DriverManger;
+import driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,7 +18,7 @@ public class LoginPage {
     private WebElement loginButton;
 
     public LoginPage() {
-        PageFactory.initElements(DriverManger.getWebDriver(), this);
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void typeIntoUsernameField(String username) {

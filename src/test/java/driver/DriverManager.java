@@ -3,11 +3,11 @@ package driver;
 import org.openqa.selenium.WebDriver;
 
 
-public class DriverManger {
+public class DriverManager {
 
     private static WebDriver driver;
 
-    private DriverManger() {
+    private DriverManager() {
 
     }
 
