@@ -4,6 +4,7 @@ import driver.DriverManager;
 import driver.DriverUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
+import static navigation.ApplicationURLs.APPLICATION_URL;
 
 
 public class TestBase {
@@ -12,7 +13,7 @@ public class TestBase {
     public void beforeTest() {
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
-        DriverUtils.navigateToPage("http://localhost/Centro/");
+        DriverUtils.navigateToPage(APPLICATION_URL);
     }
 
     @AfterMethod(alwaysRun = true)
