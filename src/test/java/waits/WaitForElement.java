@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class WaitForElement {
 
     private static WebDriverWait getWebDriverWait() {
@@ -21,5 +23,11 @@ public class WaitForElement {
         WebDriverWait webDriverWait = getWebDriverWait();
         webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
+    public static void waitUntilElementsAreVisible (List<WebElement> elements) {
+        WebDriverWait webDriverWait = getWebDriverWait();
+        webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
+
 
 }

@@ -25,7 +25,7 @@ public class LoginPage {
     private WebElement loginButton;
 
     @FindBy(xpath = "//section[@id='loginForm']/preceding-sibling::h2")
-    private WebElement loginFormHeading;
+    private WebElement loginFormHeader;
 
     @FindBy(xpath = "//input[@id='RememberMe']")
     private WebElement rememberMeCheckbox;
@@ -58,26 +58,26 @@ public class LoginPage {
 
 
     public String getLoginFormHeadingText() {
-        String text = loginFormHeading.getText();
+        String text = loginFormHeader.getText();
         logger.info("login  form header is: " + text);
         return text;
     }
 
-    public boolean rememberMeCheckboxIsPresented () {
+    public boolean rememberMeCheckboxIsPresented() {
         WaitForElement.waitUntilElementIsVisible(rememberMeCheckbox);
         boolean checkboxIsDisplayed = rememberMeCheckbox.isDisplayed();
         logger.info("Remember checkbox is presented: " + checkboxIsDisplayed);
         return checkboxIsDisplayed;
     }
 
-    public String getRememberMeCheckboxText () {
+    public String getRememberMeCheckboxText() {
         WaitForElement.waitUntilElementIsVisible(rememberMeCheckbox);
         String text = rememberMeCheckboxText.getText();
         logger.info("Remember me text is: " + text);
         return text;
     }
 
-    public boolean forgotPasswordLinkIsPresented () {
+    public boolean forgotPasswordLinkIsPresented() {
         WaitForElement.waitUntilElementIsVisible(forgotPasswordLink);
         boolean forgotPasswordLinkIsDisplayed = forgotPasswordLink.isDisplayed();
         logger.info("Forgot your password link is displayed: "+ forgotPasswordLinkIsDisplayed);
@@ -91,11 +91,17 @@ public class LoginPage {
         return registerLinkIsDisplayed;
     }
 
-    public String getRegisterLinkText () {
+    public String getRegisterLinkText() {
         WaitForElement.waitUntilElementIsVisible(registerLink);
         String text = registerLinkText.getText();
         logger.info("Register link text is: " + text);
         return text;
+    }
+
+    public void clickOnRegisterLink() {
+        WaitForElement.waitUntilElementIsClickable(registerLink);
+        registerLink.click();
+        logger.info("Register link is clicked");
     }
 
     public void typeIntoUsernameField(String username) {
@@ -125,19 +131,19 @@ public class LoginPage {
         clickOnLoginButton();
     }
 
-    public String getInvalidLoginAttemptErrorMessageText () {
+    public String getInvalidLoginAttemptErrorMessageText() {
         String text = invalidLoginAttemptErrorMessage.getText();
         logger.info("Error message text for invalid login attempt is: " + text);
         return text;
     }
 
-    public String getUsernameIsRequiredErrorMessageText () {
+    public String getUsernameIsRequiredErrorMessageText() {
         String text = usernameIsRequiredErrorMessage.getText();
         logger.info("Error message text for empty username filed is: " + text);
         return text;
     }
 
-    public String getPasswordIsRequiredErrorMessageText () {
+    public String getPasswordIsRequiredErrorMessageText() {
         String text = passwordIsRequiredErrorMessage.getText();
         logger.info("Error message text for empty password filed is: " + text);
         return text;
@@ -149,7 +155,7 @@ public class LoginPage {
         logger.info("Remember me checkbox is clicked");
     }
 
-    public void checkIfUsernameFieldIsEmptyOrNot (WebDriver driver) {
+    public void checkIfUsernameFieldIsEmptyOrNot(WebDriver driver) {
         String textInsideInputBox = usernameField.getAttribute("value");
         if(textInsideInputBox.isEmpty()) {
             System.out.println("the username field is empty");

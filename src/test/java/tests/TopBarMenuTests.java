@@ -37,4 +37,19 @@ public class TopBarMenuTests extends TestBase {
         logger.info("Login page is opened");
     }
 
+    @Test
+    public void uiTopBarElementsOnRegisterPage(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.clickOnRegisterLink();
+        String pageTitleLogin = DriverManager.getWebDriver().getTitle();
+        assertTrue(pageTitleLogin.contains("Register"));
+        TopBarMenu topBarMenu = new TopBarMenu();
+        Assert.assertTrue(topBarMenu.centroLogoImageIsPresented());
+        Assert.assertTrue(topBarMenu.centroLogoTextIsPresented());
+        Assert.assertTrue(topBarMenu.gingerRegisterLinkIsPresented());
+        Assert.assertTrue(topBarMenu.aboutLinkIsPresented());
+        Assert.assertTrue(topBarMenu.registerLinkTopNavIsPresented());
+        Assert.assertTrue(topBarMenu.LoginLinkIsPresented());
+    }
+
 }

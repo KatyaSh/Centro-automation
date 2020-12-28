@@ -21,16 +21,19 @@ public class TopBarMenu {
     }
 
 
-    @FindBy(xpath = "//img[@id='centroLogo']")
+    @FindBy(id="centroLogo")
     private WebElement centroLogo;
+
+    @FindBy(xpath = "//span[@class='centro-logo-text']")
+    private WebElement centroLogoText;
 
     @FindBy(xpath = "//a[@class='nav-breadcrumb']")
     private WebElement gingerLoginLink;
 
-    @FindBy(xpath = "//a[@id='aboutLink']")
+    @FindBy(id="aboutLink")
     private WebElement aboutLinkTopMenu;
 
-    @FindBy(xpath = "//a[@id='loginLink']")
+    @FindBy(id="loginLink")
     private WebElement loginLink;
 
     @FindBy(css = "#logoutForm > ul > li > a > span.truncate")
@@ -42,30 +45,56 @@ public class TopBarMenu {
     @FindBy(css = "#logoutForm > ul > li > ul > li:nth-child(8) > a")
     private WebElement logOffLink;
 
+    @FindBy(id ="registerLink")
+    private WebElement registerLinkTopNav;
+
+    @FindBy(xpath = "//div[@class='navbar-header']/a[@href = '/Centro/Account/Register']")
+    private WebElement gingerRegisterLink;
+
+    @FindBy(id="adminLink")
+    private WebElement adminLinkTopNav;
 
 
-    public boolean centroLogoImageIsPresented () {
+
+
+
+
+    public boolean centroLogoImageIsPresented() {
         WaitForElement.waitUntilElementIsVisible(centroLogo);
         boolean centroLogoIsDisplayed = centroLogo.isDisplayed();
         logger.info("Centro logo is displayed: " + centroLogoIsDisplayed);
         return centroLogoIsDisplayed;
     }
 
-    public boolean gingerLoginLinkIsPresented () {
+    public boolean centroLogoTextIsPresented() {
+        WaitForElement.waitUntilElementIsVisible(centroLogoText);
+        boolean centroLogoTextIsDisplayed = centroLogoText.isDisplayed();
+        logger.info("Centro logo text is displayed: " + centroLogoTextIsDisplayed);
+        return centroLogoTextIsDisplayed;
+    }
+
+    public void clickOnCentroLogoTex() {
+        WaitForElement.waitUntilElementIsClickable(centroLogoText);
+        centroLogoText.click();
+        logger.info("Centro logo text is clicked");
+    }
+
+
+    public boolean gingerLoginLinkIsPresented() {
         WaitForElement.waitUntilElementIsVisible(gingerLoginLink);
         boolean gingerLoginLinkIsDisplayed = gingerLoginLink.isDisplayed();
         logger.info("ginger Login link is displayed: " + gingerLoginLinkIsDisplayed);
         return gingerLoginLinkIsDisplayed;
     }
 
-    public boolean aboutLinkIsPresented () {
+    public boolean aboutLinkIsPresented() {
         WaitForElement.waitUntilElementIsVisible(aboutLinkTopMenu);
         boolean aboutLinkIsDisplayed = aboutLinkTopMenu.isDisplayed();
         logger.info("About link is displayed: " + aboutLinkIsDisplayed);
         return aboutLinkIsDisplayed;
     }
 
-    public boolean LoginLinkIsPresented () {
+    public boolean LoginLinkIsPresented() {
         WaitForElement.waitUntilElementIsVisible(loginLink);
         boolean loginLinkIsDisplayed = loginLink.isDisplayed();
         logger.info("Log in link is displayed: " + loginLinkIsDisplayed);
@@ -104,6 +133,26 @@ public class TopBarMenu {
         clickOnLogOffLink();
     }
 
+    public boolean gingerRegisterLinkIsPresented() {
+        WaitForElement.waitUntilElementIsVisible(gingerRegisterLink);
+        boolean gingerRegisterLinkIsDisplayed = gingerRegisterLink.isDisplayed();
+        logger.info("ginger Register link is displayed: " + gingerRegisterLinkIsDisplayed);
+        return gingerRegisterLinkIsDisplayed;
+    }
+
+    public boolean registerLinkTopNavIsPresented() {
+        WaitForElement.waitUntilElementIsVisible(registerLinkTopNav);
+        boolean registerLinkTopNavIsDisplayed = registerLinkTopNav.isDisplayed();
+        logger.info("Register link is displayed: " + registerLinkTopNavIsDisplayed);
+        return registerLinkTopNavIsDisplayed;
+    }
+
+    public void clickOnAdminLink() {
+        clickOnNavbarUserMenu();
+        WaitForElement.waitUntilElementIsVisible(adminLinkTopNav);
+        adminLinkTopNav.click();
+        logger.info("Admin link is clicked");
+    }
 
 
 

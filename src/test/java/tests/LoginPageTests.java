@@ -52,7 +52,8 @@ public class LoginPageTests extends TestBase {
         logger.info("User stays on the Login page");
         loginPage.userLogin("1234", "full");
         Assert.assertEquals("Invalid login attempt. Wrong credentials ?", loginPage.getInvalidLoginAttemptErrorMessageText());
-        assertTrue(pageTitleLogin.contains("Login"));
+        String pageTitle = DriverManager.getWebDriver().getTitle();
+        assertTrue(pageTitle.contains("Login"));
         logger.info("User stays on the Login page");
         }
 
@@ -67,7 +68,8 @@ public class LoginPageTests extends TestBase {
         logger.info("User stays on the Login page");
         loginPage.userLogin("full", "");
         Assert.assertEquals("Password is required", loginPage.getPasswordIsRequiredErrorMessageText());
-        assertTrue(pageTitleLogin.contains("Login"));
+        String pageTitle = DriverManager.getWebDriver().getTitle();
+        assertTrue(pageTitle.contains("Login"));
         logger.info("User stays on the Login page");
     }
 
